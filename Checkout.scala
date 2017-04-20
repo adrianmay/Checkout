@@ -2,26 +2,26 @@ object Checkout {
 
 	// Prices all in pence in this program
 
-	type Pence = Int
+	type Pounds = Double
 	type Item = String
 	type Shopping = List[Item]
 
 	//Prices of apples and oranges:
-	val pa:Pence = 60
-	val po:Pence = 25
+	val pa:Pounds = 0.60
+	val po:Pounds = 0.25
 
-	def price(i : Item) : Pence = i match {
+	def price(i : Item) : Pounds = i match {
 		case "Apple" => pa
 		case "Orange" => po
 		case _ => 0
 	}
 
 	//Shopping list evaluator:
-	def priceOfShopping(l : Shopping): Int = 
-		l.map(price).foldLeft(0) {_+_}
+	def priceOfShopping(l : Shopping): Pounds = 
+		l.map(price).foldLeft(0.0) {_+_}
 
 	//Test cases:
-	val cases : List[(Pence, Shopping)] = List(
+	val cases : List[(Pounds, Shopping)] = List(
 		(0,       Nil),
 		(pa,      List("Apple")),
 		(2*pa,    List("Apple", "Apple")),
