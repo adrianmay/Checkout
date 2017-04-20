@@ -6,13 +6,16 @@ object Checkout {
 	type Item = String
 	type Shopping = List[Item]
 
+	val na:String = "Apple"
+	val no:String = "Orange"
+
 	//Prices of apples and oranges:
 	val pa:Pounds = 0.60
 	val po:Pounds = 0.25
 
 	def price(i : Item) : Pounds = i match {
-		case "Apple" => pa
-		case "Orange" => po
+		case `na` => pa
+		case `no` => po
 		case _ => 0
 	}
 
@@ -20,8 +23,8 @@ object Checkout {
 	def priceOfShopping(l : Shopping): Pounds = priceOfShopping_(l.sorted)
 	def priceOfShopping_(l : Shopping): Pounds = 
 		l match {
-			case "Orange" :: "Orange" :: "Orange" :: rest => 2*price("Orange") + priceOfShopping_(rest)
-			case "Apple" :: "Apple" :: rest => price("Apple") + priceOfShopping_(rest)
+			case `no` :: `no` :: `no` :: rest => 2*price(no) + priceOfShopping_(rest)
+			case `na` :: `na` :: rest => price(na) + priceOfShopping_(rest)
 			case i :: rest => price(i) + priceOfShopping_(rest)
 			case _ => 0
 		}
@@ -32,26 +35,26 @@ object Checkout {
 	//Test cases:
 	val cases : List[(Pounds, Shopping)] = List(
 		(0,       Nil),
-		(pa,      List("Apple")),
-		(pa,      List("Apple", "Apple")),
-		(po,      List("Orange")),
-		(2*po,    List("Orange", "Orange")),
-		(2*po,    List("Orange", "Orange", "Orange")),
-		(3*po,    List("Orange", "Orange", "Orange", "Orange")),
-		(4*po,    List("Orange", "Orange", "Orange", "Orange", "Orange")),
-		(4*po,    List("Orange", "Orange", "Orange", "Orange", "Orange", "Orange")),
-		(4*po+pa, List("Orange", "Orange", "Apple",  "Apple",  "Orange", "Orange", "Orange", "Orange")),
-		(4*po+pa, List("Orange", "Apple",  "Orange", "Orange", "Orange", "Orange", "Orange")),
-		(pa+po,   List("Apple",  "Orange")),
-		(pa+po,   List("Apple",  "Apple", "Orange")),
-		(2*pa,    List("Apple",  "Apple",  "Apple")),
-		(2*pa,    List("Apple",  "Apple",  "Apple",  "Apple")),
-		(pa+po,   List("Apple",  "Orange", "Apple")),
-		(2*pa+po, List("Apple",  "Orange", "Apple",  "Apple", "Apple")),
-		(2*pa+po, List("Apple",  "Apple",  "Orange", "Apple", "Apple")),
+		(pa,      List(na)),
+		(pa,      List(na, na)),
+		(po,      List(no)),
+		(2*po,    List(no, no)),
+		(2*po,    List(no, no, no)),
+		(3*po,    List(no, no, no, no)),
+		(4*po,    List(no, no, no, no, no)),
+		(4*po,    List(no, no, no, no, no, no)),
+		(4*po+pa, List(no, no, na, na, no, no, no, no)),
+		(4*po+pa, List(no, na, no, no, no, no, no)),
+		(pa+po,   List(na, no)),
+		(pa+po,   List(na, na, no)),
+		(2*pa,    List(na, na, na)),
+		(2*pa,    List(na, na, na, na)),
+		(pa+po,   List(na, no, na)),
+		(2*pa+po, List(na, no, na, na, na)),
+		(2*pa+po, List(na, na, no, na, na)),
 
-		(pa+po,   List("Apple", "Orange", "Apple", "Slartibartfast")),
-		(pa+po,   List("Apple", "Orange", "Apple", ""))
+		(pa+po,   List(na, no, na, "Slartibartfast")),
+		(pa+po,   List(na, no, na, ""))
 	)
 
 	def main(args : Array[String]) : Unit = {
@@ -62,3 +65,4 @@ object Checkout {
 		println(resall.filter {!_._1})
 	}
 }
+
