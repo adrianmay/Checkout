@@ -27,6 +27,7 @@ object Checkout {
 	)
 
 	def main(args : Array[String]) : Unit = {
-		println("Hello, world")
+		val res = for { (p,l) <- cases } yield p==priceOfShopping(l)
+		println(res)
 	}
 }
