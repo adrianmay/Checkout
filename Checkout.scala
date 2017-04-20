@@ -10,8 +10,15 @@ object Checkout {
 	val pa:Pence = 60
 	val po:Pence = 25
 
+	def price(i : Item) : Pence = i match {
+		case "Apple" => pa
+		case "Orange" => po
+		case _ => 0
+	}
+
 	//Shopping list evaluator:
-	def priceOfShopping(shopping : Shopping): Int = 0
+	def priceOfShopping(l : Shopping): Int = 
+		l.map(price).foldLeft(0) {_+_}
 
 	//Test cases:
 	val cases : List[(Pence, Shopping)] = List(
@@ -19,6 +26,7 @@ object Checkout {
 		(pa,      List("Apple")),
 		(2*pa,    List("Apple", "Apple")),
 		(po,      List("Orange")),
+		(123,     List("Orange")), //Deliberate failure
 		(2*po,    List("Orange", "Orange")),
 		(pa+po,   List("Apple", "Orange")),
 		(2*pa+po, List("Apple", "Orange", "Apple")),
