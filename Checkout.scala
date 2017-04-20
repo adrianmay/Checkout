@@ -14,7 +14,17 @@ object Checkout {
 	def priceOfShopping(shopping : Shopping): Int = 0
 
 	//Test cases:
-	val cases : List[(Pence, Shopping)] = Nil
+	val cases : List[(Pence, Shopping)] = List(
+		(0,       Nil),
+		(pa,      List("Apple")),
+		(2*pa,    List("Apple", "Apple")),
+		(po,      List("Orange")),
+		(2*po,    List("Orange", "Orange")),
+		(pa+po,   List("Apple", "Orange")),
+		(2*pa+po, List("Apple", "Orange", "Apple")),
+		(2*pa+po, List("Apple", "Orange", "Apple", "Slartibartfast")),
+		(2*pa+po, List("Apple", "Orange", "Apple", ""))
+	)
 
 	def main(args : Array[String]) : Unit = {
 		println("Hello, world")
