@@ -1,6 +1,6 @@
 object Checkout {
 
-	// Prices all in pence in this program
+	// Prices all in pounds in this program
 
 	type Pounds = Double
 	type Item = String
