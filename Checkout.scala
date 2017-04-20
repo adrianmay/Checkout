@@ -20,6 +20,7 @@ object Checkout {
 	def priceOfShopping(l : Shopping): Pounds = priceOfShopping_(l.sorted)
 	def priceOfShopping_(l : Shopping): Pounds = 
 		l match {
+			case "Orange" :: "Orange" :: "Orange" :: rest => 2*price("Orange") + priceOfShopping_(rest)
 			case "Apple" :: "Apple" :: rest => price("Apple") + priceOfShopping_(rest)
 			case i :: rest => price(i) + priceOfShopping_(rest)
 			case _ => 0
