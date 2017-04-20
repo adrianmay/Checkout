@@ -35,7 +35,6 @@ object Checkout {
 		(pa,      List("Apple")),
 		(pa,      List("Apple", "Apple")),
 		(po,      List("Orange")),
-		(123,     List("Orange")), //Deliberate failure
 		(2*po,    List("Orange", "Orange")),
 		(2*po,    List("Orange", "Orange", "Orange")),
 		(3*po,    List("Orange", "Orange", "Orange", "Orange")),
