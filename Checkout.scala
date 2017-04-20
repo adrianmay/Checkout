@@ -26,6 +26,7 @@ object Checkout {
 		}
 
 	// 2 apples for price of 1
+	// 3 oranges for price of 2
 
 	//Test cases:
 	val cases : List[(Pounds, Shopping)] = List(
@@ -35,13 +36,19 @@ object Checkout {
 		(po,      List("Orange")),
 		(123,     List("Orange")), //Deliberate failure
 		(2*po,    List("Orange", "Orange")),
-		(pa+po,   List("Apple", "Orange")),
-		(pa+po,   List("Apple", "Apple", "Orange")),
-		(2*pa,    List("Apple", "Apple", "Apple")),
-		(2*pa,    List("Apple", "Apple", "Apple", "Apple")),
-		(pa+po,   List("Apple", "Orange", "Apple")),
-		(2*pa+po, List("Apple", "Orange", "Apple", "Apple", "Apple")),
-		(2*pa+po, List("Apple", "Apple", "Orange", "Apple", "Apple")),
+		(2*po,    List("Orange", "Orange", "Orange")),
+		(3*po,    List("Orange", "Orange", "Orange", "Orange")),
+		(4*po,    List("Orange", "Orange", "Orange", "Orange", "Orange")),
+		(4*po,    List("Orange", "Orange", "Orange", "Orange", "Orange", "Orange")),
+		(4*po,    List("Orange", "Orange", "Apple",  "Apple",  "Orange", "Orange", "Orange", "Orange")),
+		(4*po,    List("Orange", "Apple",  "Orange", "Orange", "Orange", "Orange", "Orange")),
+		(pa+po,   List("Apple",  "Orange")),
+		(pa+po,   List("Apple",  "Apple", "Orange")),
+		(2*pa,    List("Apple",  "Apple",  "Apple")),
+		(2*pa,    List("Apple",  "Apple",  "Apple",  "Apple")),
+		(pa+po,   List("Apple",  "Orange", "Apple")),
+		(2*pa+po, List("Apple",  "Orange", "Apple",  "Apple", "Apple")),
+		(2*pa+po, List("Apple",  "Apple",  "Orange", "Apple", "Apple")),
 
 		(pa+po,   List("Apple", "Orange", "Apple", "Slartibartfast")),
 		(pa+po,   List("Apple", "Orange", "Apple", ""))
