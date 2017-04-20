@@ -27,7 +27,10 @@ object Checkout {
 	)
 
 	def main(args : Array[String]) : Unit = {
-		val res = for { (p,l) <- cases } yield p==priceOfShopping(l)
-		println(res)
+		val resall = for { (p,l) <- cases } yield {
+			val pp = priceOfShopping(l)
+			(p==pp, l, p, pp)
+		}
+		println(resall.filter {!_._1})
 	}
 }
