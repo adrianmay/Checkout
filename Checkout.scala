@@ -20,18 +20,26 @@ object Checkout {
 	def priceOfShopping(l : Shopping): Pounds = 
 		l.map(price).foldLeft(0.0) {_+_}
 
+	// 2 apples for price of 1
+
 	//Test cases:
 	val cases : List[(Pounds, Shopping)] = List(
 		(0,       Nil),
 		(pa,      List("Apple")),
-		(2*pa,    List("Apple", "Apple")),
+		(pa,      List("Apple", "Apple")),
 		(po,      List("Orange")),
 		(123,     List("Orange")), //Deliberate failure
 		(2*po,    List("Orange", "Orange")),
 		(pa+po,   List("Apple", "Orange")),
-		(2*pa+po, List("Apple", "Orange", "Apple")),
-		(2*pa+po, List("Apple", "Orange", "Apple", "Slartibartfast")),
-		(2*pa+po, List("Apple", "Orange", "Apple", ""))
+		(pa+po,   List("Apple", "Apple", "Orange")),
+		(2*pa,    List("Apple", "Apple", "Apple")),
+		(2*pa,    List("Apple", "Apple", "Apple", "Apple")),
+		(pa+po,   List("Apple", "Orange", "Apple")),
+		(2*pa+po, List("Apple", "Orange", "Apple", "Apple", "Apple")),
+		(2*pa+po, List("Apple", "Apple", "Orange", "Apple", "Apple")),
+
+		(pa+po,   List("Apple", "Orange", "Apple", "Slartibartfast")),
+		(pa+po,   List("Apple", "Orange", "Apple", ""))
 	)
 
 	def main(args : Array[String]) : Unit = {
