@@ -17,10 +17,11 @@ object Checkout {
 	}
 
 	//Shopping list evaluator:
-	def priceOfShopping(l : Shopping): Pounds = 
-		l.sorted match {
-			case "Apple" :: "Apple" :: rest => price("Apple") + priceOfShopping(rest)
-			case i :: rest => price(i) + priceOfShopping(rest)
+	def priceOfShopping(l : Shopping): Pounds = priceOfShopping_(l.sorted)
+	def priceOfShopping_(l : Shopping): Pounds = 
+		l match {
+			case "Apple" :: "Apple" :: rest => price("Apple") + priceOfShopping_(rest)
+			case i :: rest => price(i) + priceOfShopping_(rest)
 			case _ => 0
 		}
 
